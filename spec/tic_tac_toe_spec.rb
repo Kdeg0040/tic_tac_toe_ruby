@@ -14,5 +14,6 @@ describe "tic tac toe" do
 
   it "raises an error if placing move out of bounds" do
     expect{ ttt.move("X", 9) }.to raise_error("Invalid move, out of bounds")
+    expect{ ttt.move("X", -1) }.to raise_error("Invalid move, out of bounds")
   end
 end
