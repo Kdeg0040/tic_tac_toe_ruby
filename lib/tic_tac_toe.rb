@@ -8,11 +8,12 @@ class TicTacToe
   end
 
   def move(x_o, pos)
-    raise "Invalid character" if !valid?(x_o)
+    valid?(x_o, pos)
     @board[pos] = x_o
   end
 
-  def valid?(x_o)
-    ["X", "O"].include?(x_o)
+  def valid?(x_o, pos)
+    raise "Invalid character" unless ["X", "O"].include?(x_o)
+    raise "Invalid move, out of bounds" unless pos < 8
   end
 end
