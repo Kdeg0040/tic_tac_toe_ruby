@@ -21,4 +21,9 @@ describe "tic tac toe" do
     ttt.move("X", 1)
     expect{ ttt.move("O", 1) }.to raise_error("Position already taken")
   end
+
+  it "enforces alternating moves" do
+    ttt.move("X", 1)
+    expect{ ttt.move("X", 2) }.to raise_error("Invalid move - next player's turn")
+  end
 end
