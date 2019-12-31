@@ -13,7 +13,12 @@ describe "tic tac toe" do
   end
 
   it "raises an error if placing move out of bounds" do
-    expect{ ttt.move("X", 9) }.to raise_error("Invalid move, out of bounds")
-    expect{ ttt.move("X", -1) }.to raise_error("Invalid move, out of bounds")
+    expect{ ttt.move("X", 9) }.to raise_error("Out of bounds")
+    expect{ ttt.move("X", -1) }.to raise_error("Out of bounds")
+  end
+
+  it "raises an error if position is already taken" do
+    ttt.move("X", 1)
+    expect{ ttt.move("O", 1) }.to raise_error("Position already taken")
   end
 end
