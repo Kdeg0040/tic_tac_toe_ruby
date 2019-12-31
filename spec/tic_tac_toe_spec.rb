@@ -28,7 +28,11 @@ describe "tic tac toe" do
   end
 
   it "can detect a winning row" do
-    @board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
+    ttt.move("X", 0)
+    ttt.move("O", 3)
+    ttt.move("X", 1)
+    ttt.move("O", 4)
+    ttt.move("X", 2)
     expect(ttt.win?).to eq(true)
   end
 end
