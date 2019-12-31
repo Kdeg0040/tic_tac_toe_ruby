@@ -14,6 +14,10 @@ class TicTacToe
     @last_move = x_o
   end
 
+  def win?
+    @board[0..2].all?(@last_move)
+  end
+
   def valid?(x_o, pos)
     raise "Invalid character" unless ["X", "O"].include?(x_o)
     raise "Out of bounds" unless pos.between?(0, 8)

@@ -26,4 +26,9 @@ describe "tic tac toe" do
     ttt.move("X", 1)
     expect{ ttt.move("X", 2) }.to raise_error("Invalid move - next player's turn")
   end
+
+  it "can detect a winning row" do
+    @board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
+    expect(ttt.win?).to eq(true)
+  end
 end
