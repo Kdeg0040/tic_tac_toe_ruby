@@ -31,7 +31,6 @@ describe "tic tac toe" do
   let(:middle_row) { middle_row = TicTacToe.new }
   let(:bottom_row) { bottom_row = TicTacToe.new }
 
-
   it "can detect a winning row" do
     top_row.board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
     top_row.last_move = "X"
@@ -46,4 +45,14 @@ describe "tic tac toe" do
     expect(middle_row.win?).to eq(true)
     expect(bottom_row.win?).to eq(true)
   end
+
+  let(:left_col) { left_col = TicTacToe.new }
+
+  it "can detect a winning column" do
+    left_col.board = ["O", nil, nil, "O", nil, nil, "O", nil, nil]
+    left_col.last_move = "O"
+
+    expect(left_col.win?).to eq(true)
+  end
+
 end
