@@ -66,11 +66,16 @@ describe "tic tac toe" do
   end
 
   let(:left_diag) { left_diag = TicTacToe.new }
+  let(:right_diag) { right_diag = TicTacToe.new }
 
   it "can detect diagonal wins" do
     left_diag.board = ["O", nil, nil, nil, "O", nil, nil, nil, "O"]
     left_diag.last_move = "O"
 
+    right_diag.board = [nil, nil, "O", nil, "O", nil, "O", nil, nil]
+    right_diag.last_move = "O"
+
     expect(left_diag.win?).to eq(true)
+    expect(right_diag.win?).to eq(true)
   end
 end
