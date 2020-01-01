@@ -65,4 +65,12 @@ describe "tic tac toe" do
     expect(right_col.win?).to eq(true)
   end
 
+  let(:left_diag) { left_diag = TicTacToe.new }
+
+  it "can detect diagonal wins" do
+    left_diag.board = ["O", nil, nil, nil, "O", nil, nil, nil, "O"]
+    left_diag.last_move = "O"
+
+    expect(left_diag.win?).to eq(true)
+  end
 end
