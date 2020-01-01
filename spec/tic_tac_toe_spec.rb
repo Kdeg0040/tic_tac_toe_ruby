@@ -38,8 +38,12 @@ describe "tic tac toe" do
 
     middle_row.board = [nil, nil, nil, "X", "X", "X", nil, nil, nil]
     middle_row.last_move = "X"
-    
+
+    bottom_row.board = [nil, nil, nil, nil, nil, nil, "X", "X", "X"]
+    bottom_row.last_move = "X"
+
     expect(top_row.win?).to eq(true)
     expect(middle_row.win?).to eq(true)
+    expect(bottom_row.win?).to eq(true)
   end
 end
