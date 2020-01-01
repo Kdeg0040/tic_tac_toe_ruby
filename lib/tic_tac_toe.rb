@@ -15,7 +15,9 @@ class TicTacToe
   end
 
   def win?
-    @board[0..2].all?(@last_move) || @board[3..5].all?(@last_move) || @board[6..8].all?(@last_move)
+    winning_combinations.each do |combination|
+      return true if combination.all?(@last_move)
+    end
   end
 
   def valid?(x_o, pos)
@@ -23,5 +25,9 @@ class TicTacToe
     raise "Out of bounds" unless pos.between?(0, 8)
     raise "Position already taken" unless @board[pos] == nil
     raise "Invalid move - next player's turn" if x_o == @last_move
+  end
+
+  def winning_combinations
+    [@board[0..2], @board[3..5], @board[6..8]]
   end
 end
