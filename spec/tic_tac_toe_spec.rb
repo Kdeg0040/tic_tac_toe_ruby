@@ -27,12 +27,19 @@ describe "tic tac toe" do
     expect{ ttt.move("X", 2) }.to raise_error("Invalid move - next player's turn")
   end
 
+  let(:top_row) { top_row = TicTacToe.new }
+  let(:middle_row) { middle_row = TicTacToe.new }
+  let(:bottom_row) { bottom_row = TicTacToe.new }
+
+
   it "can detect a winning row" do
-    ttt.move("X", 0)
-    ttt.move("O", 3)
-    ttt.move("X", 1)
-    ttt.move("O", 4)
-    ttt.move("X", 2)
-    expect(ttt.win?).to eq(true)
+    top_row.board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
+    top_row.last_move = "X"
+
+    middle_row.board = [nil, nil, nil, "X", "X", "X", nil, nil, nil]
+    middle_row.last_move = "X"
+    
+    expect(top_row.win?).to eq(true)
+    expect(middle_row.win?).to eq(true)
   end
 end

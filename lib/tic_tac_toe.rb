@@ -1,5 +1,5 @@
 class TicTacToe
-  attr_reader :board, :last_move
+  attr_accessor :board, :last_move
 
   def initialize
     @board = [nil, nil, nil,
@@ -15,7 +15,7 @@ class TicTacToe
   end
 
   def win?
-    @board[0..2].all?(@last_move)
+    @board[0..2].all?(@last_move) || @board[3..5].all?(@last_move)
   end
 
   def valid?(x_o, pos)
