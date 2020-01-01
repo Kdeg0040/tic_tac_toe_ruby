@@ -5,7 +5,7 @@ class TicTacToe
     @board = [nil, nil, nil,
               nil, nil, nil,
               nil, nil, nil]
-    @last_move = nil
+    @last_move = 0
   end
 
   def move(x_o, pos)
@@ -19,6 +19,7 @@ class TicTacToe
     winning_combinations.each do |combination|
       return true if combination.all?(@last_move)
     end
+    false
   end
 
   def valid?(x_o, pos)
