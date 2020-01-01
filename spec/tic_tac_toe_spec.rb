@@ -3,6 +3,10 @@ require "./lib/tic_tac_toe"
 describe "tic tac toe" do
   let(:ttt) { ttt = TicTacToe.new }
 
+  before(:each) do
+    allow($stdout).to receive(:puts)
+  end
+
   it "allows an X to be placed on the 3x3 board" do
     ttt.move("X", 1)
     expect(ttt.board).to include("X")
@@ -77,5 +81,14 @@ describe "tic tac toe" do
 
     expect(left_diag.win?).to eq(true)
     expect(right_diag.win?).to eq(true)
+  end
+
+  it "can output the winner to the user" do
+    ttt.move("X", 0)
+    ttt.move("O", 3)
+    ttt.move("X", 1)
+    ttt.move("O", 4)
+    allow(ttt).to receive(:puts).and_return("Game Over - X Wins!")
+    expect(ttt.move("X", 2)).to eq("Game Over - X Wins!")
   end
 end
