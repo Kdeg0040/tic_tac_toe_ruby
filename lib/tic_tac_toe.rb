@@ -28,6 +28,8 @@ class TicTacToe
   end
 
   def winning_combinations
-    [@board[0..2], @board[3..5], @board[6..8], [@board[0], @board[3], @board[6]]]
+    [@board[0..2], @board[3..5], @board[6..8],
+    [@board[0], @board[3], @board[6]],
+    [@board[1], @board[4], @board[7]]]
   end
 end
