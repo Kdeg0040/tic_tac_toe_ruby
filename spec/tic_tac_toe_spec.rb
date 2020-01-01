@@ -48,6 +48,7 @@ describe "tic tac toe" do
 
   let(:left_col) { left_col = TicTacToe.new }
   let(:middle_col) { middle_col = TicTacToe.new }
+  let(:right_col) {right_col = TicTacToe.new }
 
   it "can detect a winning column" do
     left_col.board = ["O", nil, nil, "O", nil, nil, "O", nil, nil]
@@ -56,8 +57,12 @@ describe "tic tac toe" do
     middle_col.board = [nil, "O", nil, nil, "O", nil, nil, "O", nil]
     middle_col.last_move = "O"
 
+    right_col.board = [nil, nil, "O", nil, nil, "O", nil, nil, "O"]
+    right_col.last_move = "O"
+
     expect(left_col.win?).to eq(true)
     expect(middle_col.win?).to eq(true)
+    expect(right_col.win?).to eq(true)
   end
 
 end
