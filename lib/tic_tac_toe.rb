@@ -12,9 +12,7 @@ class TicTacToe
     valid?(x_o, pos)
     @board[pos] = x_o
     @last_move = x_o
-    if win?
-      puts "Game Over - #{@last_move} Wins!"
-    end
+    puts "Game Over - #{@last_move} Wins!" if win?
   end
 
   def win?
