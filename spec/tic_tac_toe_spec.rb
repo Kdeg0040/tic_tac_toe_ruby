@@ -33,23 +33,24 @@ describe "tic tac toe" do
     end
   end
 
-  let(:top_row) { top_row = TicTacToe.new }
-  let(:middle_row) { middle_row = TicTacToe.new }
-  let(:bottom_row) { bottom_row = TicTacToe.new }
+  describe "detects a win" do
+    it "on top row" do
+      ttt.board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
+      ttt.last_move = "X"
+      expect(ttt.win?).to eq(true)
+    end
 
-  it "can detect a winning row" do
-    top_row.board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
-    top_row.last_move = "X"
+    it "on middle row" do
+      ttt.board = [nil, nil, nil, "X", "X", "X", nil, nil, nil]
+      ttt.last_move = "X"
+      expect(ttt.win?).to eq(true)
+    end
 
-    middle_row.board = [nil, nil, nil, "X", "X", "X", nil, nil, nil]
-    middle_row.last_move = "X"
-
-    bottom_row.board = [nil, nil, nil, nil, nil, nil, "X", "X", "X"]
-    bottom_row.last_move = "X"
-
-    expect(top_row.win?).to eq(true)
-    expect(middle_row.win?).to eq(true)
-    expect(bottom_row.win?).to eq(true)
+    it "on bottom row" do
+      ttt.board = [nil, nil, nil, nil, nil, nil, "X", "X", "X"]
+      ttt.last_move = "X"
+      expect(ttt.win?).to eq(true)
+    end
   end
 
   let(:left_col) { left_col = TicTacToe.new }
