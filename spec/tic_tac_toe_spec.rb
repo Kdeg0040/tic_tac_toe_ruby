@@ -12,23 +12,25 @@ describe "tic tac toe" do
     expect(ttt.board).to include("X")
   end
 
-  it "raises an error if not X or O" do
-    expect{ ttt.move("Y", 0) }.to raise_error("Invalid character")
-  end
+  describe "raises an error" do
+    it "if not X or O" do
+      expect{ ttt.move("Y", 0) }.to raise_error("Invalid character")
+    end
 
-  it "raises an error if placing move out of bounds" do
-    expect{ ttt.move("X", 9) }.to raise_error("Out of bounds")
-    expect{ ttt.move("X", -1) }.to raise_error("Out of bounds")
-  end
+    it "if placing move out of bounds" do
+      expect{ ttt.move("X", 9) }.to raise_error("Out of bounds")
+      expect{ ttt.move("X", -1) }.to raise_error("Out of bounds")
+    end
 
-  it "raises an error if position is already taken" do
-    ttt.move("X", 1)
-    expect{ ttt.move("O", 1) }.to raise_error("Position already taken")
-  end
+    it "if position is already taken" do
+      ttt.move("X", 1)
+      expect{ ttt.move("O", 1) }.to raise_error("Position already taken")
+    end
 
-  it "enforces alternating moves" do
-    ttt.move("X", 1)
-    expect{ ttt.move("X", 2) }.to raise_error("Invalid move - next player's turn")
+    it "if move out of turn" do
+      ttt.move("X", 1)
+      expect{ ttt.move("X", 2) }.to raise_error("Invalid move - next player's turn")
+    end
   end
 
   let(:top_row) { top_row = TicTacToe.new }
