@@ -73,20 +73,20 @@ describe "tic tac toe" do
         expect(ttt.win?).to eq(true)
       end
     end
-  end
 
-  let(:left_diag) { left_diag = TicTacToe.new }
-  let(:right_diag) { right_diag = TicTacToe.new }
+    context "on a diagonal" do
+      it "left to right" do
+        ttt.board = ["O", nil, nil, nil, "O", nil, nil, nil, "O"]
+        ttt.last_move = "O"
+        expect(ttt.win?).to eq(true)
+      end
 
-  it "can detect diagonal wins" do
-    left_diag.board = ["O", nil, nil, nil, "O", nil, nil, nil, "O"]
-    left_diag.last_move = "O"
-
-    right_diag.board = [nil, nil, "O", nil, "O", nil, "O", nil, nil]
-    right_diag.last_move = "O"
-
-    expect(left_diag.win?).to eq(true)
-    expect(right_diag.win?).to eq(true)
+      it "right to left" do
+        ttt.board = [nil, nil, "O", nil, "O", nil, "O", nil, nil]
+        ttt.last_move = "O"
+        expect(ttt.win?).to eq(true)
+      end
+    end
   end
 
   it "can output the winner to the user" do
