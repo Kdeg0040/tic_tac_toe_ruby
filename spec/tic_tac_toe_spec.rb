@@ -54,22 +54,24 @@ describe "tic tac toe" do
       end
     end
 
-    it "on left column" do
-      ttt.board = ["O", nil, nil, "O", nil, nil, "O", nil, nil]
-      ttt.last_move = "O"
-      expect(ttt.win?).to eq(true)
-    end
+    context "on a column" do
+      it "left" do
+        ttt.board = ["O", nil, nil, "O", nil, nil, "O", nil, nil]
+        ttt.last_move = "O"
+        expect(ttt.win?).to eq(true)
+      end
 
-    it "on middle column" do
-      ttt.board = [nil, "O", nil, nil, "O", nil, nil, "O", nil]
-      ttt.last_move = "O"
-      expect(ttt.win?).to eq(true)
-    end
+      it "middle" do
+        ttt.board = [nil, "O", nil, nil, "O", nil, nil, "O", nil]
+        ttt.last_move = "O"
+        expect(ttt.win?).to eq(true)
+      end
 
-    it "on right column" do
-      ttt.board = [nil, nil, "O", nil, nil, "O", nil, nil, "O"]
-      ttt.last_move = "O"
-      expect(ttt.win?).to eq(true)
+      it "right" do
+        ttt.board = [nil, nil, "O", nil, nil, "O", nil, nil, "O"]
+        ttt.last_move = "O"
+        expect(ttt.win?).to eq(true)
+      end
     end
   end
 
