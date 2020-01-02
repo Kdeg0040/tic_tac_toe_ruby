@@ -51,25 +51,24 @@ describe "tic tac toe" do
       ttt.last_move = "X"
       expect(ttt.win?).to eq(true)
     end
-  end
 
-  let(:left_col) { left_col = TicTacToe.new }
-  let(:middle_col) { middle_col = TicTacToe.new }
-  let(:right_col) {right_col = TicTacToe.new }
+    it "on left column" do
+      ttt.board = ["O", nil, nil, "O", nil, nil, "O", nil, nil]
+      ttt.last_move = "O"
+      expect(ttt.win?).to eq(true)
+    end
 
-  it "can detect a winning column" do
-    left_col.board = ["O", nil, nil, "O", nil, nil, "O", nil, nil]
-    left_col.last_move = "O"
+    it "on middle column" do
+      ttt.board = [nil, "O", nil, nil, "O", nil, nil, "O", nil]
+      ttt.last_move = "O"
+      expect(ttt.win?).to eq(true)
+    end
 
-    middle_col.board = [nil, "O", nil, nil, "O", nil, nil, "O", nil]
-    middle_col.last_move = "O"
-
-    right_col.board = [nil, nil, "O", nil, nil, "O", nil, nil, "O"]
-    right_col.last_move = "O"
-
-    expect(left_col.win?).to eq(true)
-    expect(middle_col.win?).to eq(true)
-    expect(right_col.win?).to eq(true)
+    it "on right column" do
+      ttt.board = [nil, nil, "O", nil, nil, "O", nil, nil, "O"]
+      ttt.last_move = "O"
+      expect(ttt.win?).to eq(true)
+    end
   end
 
   let(:left_diag) { left_diag = TicTacToe.new }
