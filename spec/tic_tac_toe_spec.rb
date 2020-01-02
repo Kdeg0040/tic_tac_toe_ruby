@@ -34,22 +34,24 @@ describe "tic tac toe" do
   end
 
   describe "detects a win" do
-    it "on top row" do
-      ttt.board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
-      ttt.last_move = "X"
-      expect(ttt.win?).to eq(true)
-    end
+    context "on a row" do
+      it "top" do
+        ttt.board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
+        ttt.last_move = "X"
+        expect(ttt.win?).to eq(true)
+      end
 
-    it "on middle row" do
-      ttt.board = [nil, nil, nil, "X", "X", "X", nil, nil, nil]
-      ttt.last_move = "X"
-      expect(ttt.win?).to eq(true)
-    end
+      it "middle" do
+        ttt.board = [nil, nil, nil, "X", "X", "X", nil, nil, nil]
+        ttt.last_move = "X"
+        expect(ttt.win?).to eq(true)
+      end
 
-    it "on bottom row" do
-      ttt.board = [nil, nil, nil, nil, nil, nil, "X", "X", "X"]
-      ttt.last_move = "X"
-      expect(ttt.win?).to eq(true)
+      it "bottom" do
+        ttt.board = [nil, nil, nil, nil, nil, nil, "X", "X", "X"]
+        ttt.last_move = "X"
+        expect(ttt.win?).to eq(true)
+      end
     end
 
     it "on left column" do
