@@ -100,7 +100,7 @@ describe "tic tac toe" do
 
   it "can print the game board" do
     ttt.board = ["X", " ", "O", "O", " ", " ", "X", " ", "X"]
-    op = "\n X |   | O \n-----------\n O |   |   \n-----------\n X |   | X \n\n"
+    op = "\n X |   | O \n---+---+---\n O |   |   \n---+---+---\n X |   | X \n\n"
     expect { ttt.print_board }.to output(op).to_stdout
   end
 
