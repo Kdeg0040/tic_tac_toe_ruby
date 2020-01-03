@@ -27,7 +27,7 @@ class TicTacToe
     if win?
       print "Game Over - #{@last_move} Wins!"
     elsif !@board.any?(" ")
-      print "Tie Game"
+      print "Tie Game!"
     end
   end
 
