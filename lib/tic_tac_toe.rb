@@ -13,7 +13,12 @@ class TicTacToe
     @board[pos] = x_o
     @last_move = x_o
     print_board
-    print "Game Over - #{@last_move} Wins!" if win?
+
+    if win?
+      print "Game Over - #{@last_move} Wins!"
+    elsif !@board.any?(" ")
+      print "Tie Game"
+    end
   end
 
   def win?

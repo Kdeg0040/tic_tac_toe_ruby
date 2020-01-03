@@ -103,4 +103,10 @@ describe "tic tac toe" do
     op = "\n X |   | O \n-----------\n O |   |   \n-----------\n X |   | X \n\n"
     expect { ttt.print_board }.to output(op).to_stdout
   end
+
+  it "can declare a tie game" do
+    ttt.board = ["X", "X", "O", "O", "O", "X", "X", "O", " "]
+    allow(ttt).to receive(:print).and_return("Tie Game!")
+    expect(ttt.move("X", 8)).to eq("Tie Game!")
+  end
 end
