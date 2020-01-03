@@ -13,12 +13,7 @@ class TicTacToe
     @board[pos] = x_o
     @last_move = x_o
     print_board
-
-    if win?
-      print "Game Over - #{@last_move} Wins!"
-    elsif !@board.any?(" ")
-      print "Tie Game"
-    end
+    end_game?
   end
 
   def win?
@@ -26,6 +21,14 @@ class TicTacToe
       return true if combination.all?(@last_move)
     end
     false
+  end
+
+  def end_game?
+    if win?
+      print "Game Over - #{@last_move} Wins!"
+    elsif !@board.any?(" ")
+      print "Tie Game"
+    end
   end
 
   def valid?(x_o, pos)
