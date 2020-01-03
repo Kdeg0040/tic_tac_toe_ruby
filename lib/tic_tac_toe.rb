@@ -2,17 +2,18 @@ class TicTacToe
   attr_accessor :board, :last_move
 
   def initialize
-    @board = [nil, nil, nil,
-              nil, nil, nil,
-              nil, nil, nil]
-    @last_move = 0
+    @board = [" ", " ", " ",
+              " ", " ", " ",
+              " ", " ", " "]
+    @last_move = nil
   end
 
   def move(x_o, pos)
     valid?(x_o, pos)
     @board[pos] = x_o
     @last_move = x_o
-    puts "Game Over - #{@last_move} Wins!" if win?
+    print_board
+    print "Game Over - #{@last_move} Wins!" if win?
   end
 
   def win?
@@ -25,7 +26,7 @@ class TicTacToe
   def valid?(x_o, pos)
     raise "Invalid character" unless ["X", "O"].include?(x_o)
     raise "Out of bounds" unless pos.between?(0, 8)
-    raise "Position already taken" unless @board[pos] == nil
+    raise "Position already taken" unless @board[pos] == " "
     raise "Invalid move - next player's turn" if x_o == @last_move
   end
 
@@ -36,5 +37,13 @@ class TicTacToe
     [@board[2], @board[5], @board[8]],
     [@board[0], @board[4], @board[8]],
     [@board[2], @board[4], @board[6]]]
+  end
+
+  def print_board
+    print "\n #{board[0]} | #{board[1]} | #{board[2]} \n"
+    print "-----------\n"
+    print " #{board[3]} | #{board[4]} | #{board[5]} \n"
+    print "-----------\n"
+    print " #{board[6]} | #{board[7]} | #{board[8]} \n\n"
   end
 end

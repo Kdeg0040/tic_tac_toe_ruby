@@ -4,7 +4,7 @@ describe "tic tac toe" do
   let(:ttt) { ttt = TicTacToe.new }
 
   before(:each) do
-    allow($stdout).to receive(:puts)
+    allow($stdout).to receive(:write)
   end
 
   it "allows an X to be placed on the 3x3 board" do
@@ -36,19 +36,19 @@ describe "tic tac toe" do
   describe "detects a win" do
     context "on a row" do
       it "top" do
-        ttt.board = ["X", "X", "X", nil, nil, nil, nil, nil, nil]
+        ttt.board = ["X", "X", "X", " ", " ", " ", " ", " ", " "]
         ttt.last_move = "X"
         expect(ttt.win?).to eq(true)
       end
 
       it "middle" do
-        ttt.board = [nil, nil, nil, "X", "X", "X", nil, nil, nil]
+        ttt.board = [" ", " ", " ", "X", "X", "X", " ", " ", " "]
         ttt.last_move = "X"
         expect(ttt.win?).to eq(true)
       end
 
       it "bottom" do
-        ttt.board = [nil, nil, nil, nil, nil, nil, "X", "X", "X"]
+        ttt.board = [" ", " ", " ", " ", " ", " ", "X", "X", "X"]
         ttt.last_move = "X"
         expect(ttt.win?).to eq(true)
       end
@@ -56,19 +56,19 @@ describe "tic tac toe" do
 
     context "on a column" do
       it "left" do
-        ttt.board = ["O", nil, nil, "O", nil, nil, "O", nil, nil]
+        ttt.board = ["O", " ", " ", "O", " ", " ", "O", " ", " "]
         ttt.last_move = "O"
         expect(ttt.win?).to eq(true)
       end
 
       it "middle" do
-        ttt.board = [nil, "O", nil, nil, "O", nil, nil, "O", nil]
+        ttt.board = [" ", "O", " ", " ", "O", " ", " ", "O", " "]
         ttt.last_move = "O"
         expect(ttt.win?).to eq(true)
       end
 
       it "right" do
-        ttt.board = [nil, nil, "O", nil, nil, "O", nil, nil, "O"]
+        ttt.board = [" ", " ", "O", " ", " ", "O", " ", " ", "O"]
         ttt.last_move = "O"
         expect(ttt.win?).to eq(true)
       end
@@ -76,13 +76,13 @@ describe "tic tac toe" do
 
     context "on a diagonal" do
       it "left to right" do
-        ttt.board = ["O", nil, nil, nil, "O", nil, nil, nil, "O"]
+        ttt.board = ["O", " ", " ", " ", "O", " ", " ", " ", "O"]
         ttt.last_move = "O"
         expect(ttt.win?).to eq(true)
       end
 
       it "right to left" do
-        ttt.board = [nil, nil, "O", nil, "O", nil, "O", nil, nil]
+        ttt.board = [" ", " ", "O", " ", "O", " ", "O", " ", " "]
         ttt.last_move = "O"
         expect(ttt.win?).to eq(true)
       end
@@ -94,7 +94,13 @@ describe "tic tac toe" do
     ttt.move("O", 3)
     ttt.move("X", 1)
     ttt.move("O", 4)
-    allow(ttt).to receive(:puts).and_return("Game Over - X Wins!")
+    allow(ttt).to receive(:print).and_return("Game Over - X Wins!")
     expect(ttt.move("X", 2)).to eq("Game Over - X Wins!")
+  end
+
+  it "can print the game board" do
+    ttt.board = ["X", " ", "O", "O", " ", " ", "X", " ", "X"]
+    op = "\n X |   | O \n-----------\n O |   |   \n-----------\n X |   | X \n\n"
+    expect { ttt.print_board }.to output(op).to_stdout
   end
 end
