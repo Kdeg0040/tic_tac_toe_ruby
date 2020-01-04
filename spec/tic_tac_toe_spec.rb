@@ -109,4 +109,9 @@ describe "tic tac toe" do
     allow(ttt).to receive(:print).and_return("Tie Game!")
     expect(ttt.move("X", 9)).to eq("Tie Game!")
   end
+
+  it "can display board positions when starting a new game" do
+    op = "\nPosition Locations:\n\n 1 | 2 | 3 \n---+---+---\n 4 | 5 | 6 \n---+---+---\n 7 | 8 | 9 \n\n"
+    expect { ttt1 = TicTacToe.new }.to output(op).to_stdout
+  end
 end

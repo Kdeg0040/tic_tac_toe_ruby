@@ -6,6 +6,13 @@ class TicTacToe
               " ", " ", " ",
               " ", " ", " "]
     @last_move = nil
+
+    print "\nPosition Locations:\n\n"
+    print " 1 | 2 | 3 \n"
+    print "---+---+---\n"
+    print " 4 | 5 | 6 \n"
+    print "---+---+---\n"
+    print " 7 | 8 | 9 \n\n"
   end
 
   def move(x_o, pos)
